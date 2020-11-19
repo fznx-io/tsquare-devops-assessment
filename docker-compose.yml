@@ -21,7 +21,7 @@ services:
       # Where our data will be persisted
     volumes:
     - tsquare:/var/lib/mysql
-
+    - ./mysql-init:/docker-entrypoint-initdb.d
 
   tsquare-apis:
     container_name: tsquare-apis  
