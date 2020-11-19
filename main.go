@@ -1,6 +1,7 @@
 package main
 
 import (
+    "fmt"
     "database/sql"
     "log"
     "net/http"
@@ -148,6 +149,10 @@ func Delete(w http.ResponseWriter, r *http.Request) {
     http.Redirect(w, r, "/", 301)
 }
 
+func Health(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "OK")
+}
+
 func main() {
     log.Println("Server started on: http://localhost:8080")
     http.HandleFunc("/", Index)
@@ -157,5 +162,6 @@ func main() {
     http.HandleFunc("/insert", Insert)
     http.HandleFunc("/update", Update)
     http.HandleFunc("/delete", Delete)
+    http.HandleFunc("/health", Health)
     http.ListenAndServe(":8000", nil)
 }
