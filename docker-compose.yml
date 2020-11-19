@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+
+  tsquare-db:
+    container_name: tsquare-db
+    image: mysql:8.0.22
+    environment:
+      MYSQL_DATABASE: 'ts_db'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'ts_usr'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'ts_pwd'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'rt_pwd'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+    - tsquare:/var/lib/mysql
+
+
+  tsquare-apis:
+    container_name: tsquare-apis  
+    depends_on:
+      - tsquare-db
+    build: .
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '8000:8000'
+    expose:
+      # Opens port 3306 on the container
+      - '8000'
+
+# Names our volume
+volumes:
+ tsquare:
