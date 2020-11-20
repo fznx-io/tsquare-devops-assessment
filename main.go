@@ -154,7 +154,7 @@ func Health(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-    log.Println("Server started on: http://localhost:8080")
+    log.Println("Server started on: http://localhost:8000")
     http.HandleFunc("/", Index)
     http.HandleFunc("/show", Show)
     http.HandleFunc("/new", New)
