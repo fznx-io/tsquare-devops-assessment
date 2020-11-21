@@ -43,3 +43,7 @@ This sript will run these tasks:
 4. Create a proxy to connect your local to the service at kubernetes, so the service can be accessed at http://localhost:8000
 
 If you want to use Kubernetes Ingress you need to adjust the ingress yml at the helm chart and create a dns record for it and this is not covered in the script, because this need a real domain and its dns configuration.
+
+Note : simple different things of the development (build) environment may create this script doesn't work or I missed some tasks that is not covered in the doc. So you can ask me at my email or whatsapp chat.
+
+Thank you
